@@ -10,15 +10,41 @@ try:
 
     cursor = mydb.cursor()
 
+    # Cadastrar Onça-pintada
+    nomeCientifico = 'Panthera onca'
+    nome = 'Onça-pintada'
+    habitat = 'Florestas tropicais e pantanal'
+    nivelPerigo = 'Alto'
+    descricao = 'Maior felino das Américas, com pelagem amarelada e rosetas.'
+    caracterFisic = 'Corpo robusto e mandíbula extremamente forte.'
+    sobre = 'Excelente nadadora e caçadora no topo da cadeia alimentar.'
+
+    queryInserir = """INSERT INTO animal (nomeCientifico, nome, habitat, nivelPerigo, descricao, caracterFisic, sobre) VALUES (%s, %s, %s, %s, %s, %s, %s)"""
+
+    dadosAnimais = (nomeCientifico, nome, habitat, nivelPerigo, descricao, caracterFisic, sobre)
+
+    cursor.execute("SELECT * FROM animal WHERE nomeCientifico = %s", ('Panthera onca',))
+
+    animal = cursor.fetchone()
+
+    if (bool(animal) == True):
+        print("Onça-pintada já está cadastrada")
+    else:
+        cursor.execute(queryInserir, dadosAnimais)
+        mydb.commit()
+        print("Onça-pintada cadastrada")
+
+    #Mostrar animais
     print("--- Animais cadastrados no banco ---")
     cursor.execute("SELECT * FROM animal")
     results = cursor.fetchall()
+
 
     for animal in results:
         print(animal)
 
     i = 0
-    while i == 0:
+    while (i == 0):
         #escolhe oq fazer
         escolha = int(input("1-inserir\n2-excluir\n3-consultar\n4-atualização\n5-fechar\nO que deseja fazer:"))
 
@@ -67,7 +93,7 @@ try:
             cursor.execute(querySelect, (nomeCientifico,))
             results = cursor.fetchall()
 
-            if (results == True):
+            if (bool(results) == True):
                 print("\n--- Animal encontrado ---")
 
                 for animal in results:
@@ -90,7 +116,7 @@ try:
 
             animal = cursor.fetchone()
 
-            if (animal == True):
+            if (bool(animal) == True):
 
                 print("\nDigite os novos dados do animal:")
 
