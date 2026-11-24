@@ -3,7 +3,7 @@ class AnimalDAO:
     def __init__(self, mydb):
         self.mydb = mydb
 
-    # Cadastrar animal
+    #Cadastrar animal
     def inserir(self, dados):
         cursor = self.mydb.cursor()
 
@@ -18,7 +18,7 @@ class AnimalDAO:
         self.mydb.commit()
         cursor.close()
 
-    # Excluir animal
+    #Excluir animal
     def excluir(self, nomeCientifico):
         cursor = self.mydb.cursor()
 
@@ -35,7 +35,7 @@ class AnimalDAO:
 
         return resultado
 
-    # Consultar animal
+    #Consultar animal
     def consultar(self, nomeCientifico):
         cursor = self.mydb.cursor()
 
@@ -50,7 +50,7 @@ class AnimalDAO:
         cursor.close()
         return animal
 
-    # Listar animais
+    #Listar todos os animais
     def listar(self):
         cursor = self.mydb.cursor()
 
@@ -60,7 +60,7 @@ class AnimalDAO:
         cursor.close()
         return animais
 
-    # Atualizar animal
+    #Atualizar animal
     def atualizar(self, dados):
         cursor = self.mydb.cursor()
 

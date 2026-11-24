@@ -31,7 +31,8 @@ class AnimalController:
         self.view.display_animais(animais)
 
         # Menu principal
-        while True:
+        i=0
+        while (i==0):
 
             escolha = self.view.menu()
 
@@ -106,12 +107,24 @@ class AnimalController:
                         "Animal não encontrado!"
                     )
 
-            # Fechar
+            # Listar todos os animais cadastrados
             elif escolha == 5:
+
+                animais = self.model.get_animais()
+
+                if animais:
+                    self.view.display_animais(animais)
+                else:
+                    self.view.mensagem(
+                        "Nenhum animal cadastrado!"
+                    )
+
+            # Fechar
+            elif escolha == 6:
                 self.view.mensagem(
                     "Programa encerrado!"
                 )
-                break
+                i+=1
 
             else:
                 self.view.mensagem(

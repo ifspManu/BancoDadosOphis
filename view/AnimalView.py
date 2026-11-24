@@ -1,11 +1,12 @@
 class AnimalView:
 
     def menu(self):
-        print("\n1 - Inserir")
-        print("2 - Excluir")
-        print("3 - Consultar")
-        print("4 - Atualizar")
-        print("5 - Fechar")
+        print("\n1 - Inserir animal")
+        print("2 - Excluir animal")
+        print("3 - Consultar animal")
+        print("4 - Atualizar animal")
+        print("5 - Lista animais")
+        print("6 - Fechar programa")
 
         return int(input("O que deseja fazer: "))
 
