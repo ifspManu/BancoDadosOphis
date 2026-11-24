@@ -1,4 +1,4 @@
-from database.conexao import conectar
+from bdd.Banco import conectar
 from dao.AnimalDAO import AnimalDAO
 from model.AnimalModel import AnimalModel
 from view.AnimalView import AnimalView
